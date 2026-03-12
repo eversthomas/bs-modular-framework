@@ -104,6 +104,14 @@ class ModuleListTable extends WP_List_Table {
 			admin_url( 'admin.php' )
 		);
 
+		$fields_url = add_query_arg(
+			array(
+				'page'      => 'bs-modular-framework-fields',
+				'module_id' => $id,
+			),
+			admin_url( 'admin.php' )
+		);
+
 		$delete_url = wp_nonce_url(
 			add_query_arg(
 				array(
@@ -118,6 +126,7 @@ class ModuleListTable extends WP_List_Table {
 
 		$actions = array(
 			'edit'   => sprintf( '<a href="%s">%s</a>', esc_url( $edit_url ), esc_html__( 'Bearbeiten', 'bs-modular-framework' ) ),
+			'fields' => sprintf( '<a href="%s">%s</a>', esc_url( $fields_url ), esc_html__( 'Felder', 'bs-modular-framework' ) ),
 			'delete' => sprintf( '<a href="%s" onclick="return confirm(\'%s\');">%s</a>', esc_url( $delete_url ), esc_js( __( 'Modul wirklich löschen?', 'bs-modular-framework' ) ), esc_html__( 'Löschen', 'bs-modular-framework' ) ),
 		);
 

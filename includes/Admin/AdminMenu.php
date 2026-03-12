@@ -28,6 +28,15 @@ class AdminMenu {
 			'dashicons-index-card',
 			60
 		);
+
+		add_submenu_page(
+			self::MENU_SLUG_MODULES,
+			__( 'Felder', 'bs-modular-framework' ),
+			__( 'Felder', 'bs-modular-framework' ),
+			Capabilities::manage_modules(),
+			'bs-modular-framework-fields',
+			array( $this, 'render_fields_page' )
+		);
 	}
 
 	/**
@@ -45,6 +54,24 @@ class AdminMenu {
 		}
 
 		$page = new ModuleAdminPage();
+		$page->handle_request();
+	}
+
+	/**
+	 * Callback für die Feldverwaltungs-Seite.
+	 *
+	 * @return void
+	 */
+	public function render_fields_page(): void {
+		if ( ! current_user_can( Capabilities::manage_modules() ) ) {
+			wp_die( esc_html__( 'Du hast keine Berechtigung, diese Seite zu sehen.', 'bs-modular-framework' ) );
+		}
+
+		if ( ! class_exists( __NAMESPACE__ . '\\FieldAdminPage' ) ) {
+			require_once __DIR__ . '/FieldAdminPage.php';
+		}
+
+		$page = new FieldAdminPage();
 		$page->handle_request();
 	}
 }

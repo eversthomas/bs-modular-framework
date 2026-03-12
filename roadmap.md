@@ -63,22 +63,22 @@
 ---
 
 ## Phase 4 – Feldverwaltung je Modul
-- [ ] `FieldAdminPage.php`
-- [ ] View `fields-list.php`
-- [ ] View `field-form.php`
-- [ ] Felder pro Modul anlegen, bearbeiten, löschen
-- [ ] Feldsortierung speichern
-- [ ] Pflichtfeld-Option
-- [ ] Select-Konfiguration über einfache Text-/Listenlogik
+- [x] `FieldAdminPage.php`
+- [x] View `fields-list.php`
+- [x] View `field-form.php`
+- [x] Felder pro Modul anlegen, bearbeiten, löschen
+- [x] Feldsortierung speichern
+- [x] Pflichtfeld-Option
+- [x] Select-Konfiguration über einfache Text-/Listenlogik
 - [ ] Bildfeld-Konfiguration integrieren
-- [ ] Feld-Keys innerhalb eines Moduls eindeutig validieren
+- [x] Feld-Keys innerhalb eines Moduls eindeutig validieren
 
 **Validierung Phase 4:**
-- [ ] Feld kann einem Modul hinzugefügt werden
-- [ ] Feldtypen werden korrekt gespeichert
-- [ ] Select-Feld akzeptiert und validiert Optionen korrekt
-- [ ] Doppelte Feld-Keys werden verhindert
-- [ ] Bildfeld ist als Typ auswählbar
+- [x] Feld kann einem Modul hinzugefügt werden
+- [x] Feldtypen werden korrekt gespeichert
+- [x] Select-Feld akzeptiert und validiert Optionen korrekt
+- [x] Doppelte Feld-Keys werden verhindert
+- [x] Bildfeld ist als Typ auswählbar
 
 ---
 
@@ -130,6 +130,6 @@
 - [x] Phase 1 abgeschlossen
 - [ ] Phase 2 abgeschlossen
 - [x] Phase 3 abgeschlossen
-- [ ] Phase 4 abgeschlossen
+- [x] Phase 4 abgeschlossen
 - [ ] Phase 5 abgeschlossen
 - [ ] Phase 6 abgeschlossen
