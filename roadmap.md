@@ -21,21 +21,21 @@
 ---
 
 ## Phase 2 – Domain-Modell, Repositories & Feldtypen
-- [ ] Domain-Klassen: `Module`, `FieldDefinition`, `Entry`, `FieldValue`
-- [ ] Abstrakte `Repository.php`
-- [ ] `ModuleRepository.php`
-- [ ] `FieldRepository.php`
-- [ ] `EntryRepository.php`
-- [ ] `FieldValueRepository.php`
-- [ ] `FieldTypeRegistry.php`
-- [ ] `FieldTypeInterface.php` + `AbstractFieldType.php`
-- [ ] Feldtypen: Text, Textarea, Number, Email, URL, Date, Select, Checkbox, Image
-- [ ] `Validator.php` und `Sanitizer.php`
-- [ ] Validierungs- und Sanitization-Logik pro Feldtyp
+- [x] Domain-Klassen: `Module`, `FieldDefinition`, `Entry`, `FieldValue`
+- [x] Abstrakte `Repository.php`
+- [x] `ModuleRepository.php`
+- [x] `FieldRepository.php`
+- [x] `EntryRepository.php`
+- [x] `FieldValueRepository.php`
+- [x] `FieldTypeRegistry.php`
+- [x] `FieldTypeInterface.php` + `AbstractFieldType.php`
+- [x] Feldtypen: Text, Textarea, Number, Email, URL, Date, Select, Checkbox, Image
+- [x] `Validator.php` und `Sanitizer.php`
+- [x] Validierungs- und Sanitization-Logik pro Feldtyp
 
 **Validierung Phase 2:**
 - [ ] Unit-Tests für Feldtypen vorhanden
-- [ ] Repositories können Daten lesen/schreiben
+- [x] Repositories können Daten lesen/schreiben
 - [ ] Ungültige Werte werden korrekt abgelehnt
 - [ ] Select speichert nur erlaubte Optionen
 - [ ] Image-Feld akzeptiert Medien-ID als gültiges Format
@@ -43,22 +43,22 @@
 ---
 
 ## Phase 3 – Modulverwaltung im Admin
-- [ ] `AdminMenu.php`
-- [ ] `ModuleAdminPage.php`
-- [ ] `ModuleListTable.php`
-- [ ] View `modules-list.php`
-- [ ] View `module-form.php`
-- [ ] Module anlegen, bearbeiten, löschen
-- [ ] Nonces und Capability-Checks in allen Modul-Aktionen
-- [ ] Tabellenansicht mit Such-/Sortiergrundlage, sofern sinnvoll
-- [ ] WordPress-Standard-Notices für Erfolg/Fehler
+- [x] `AdminMenu.php`
+- [x] `ModuleAdminPage.php`
+- [x] `ModuleListTable.php`
+- [x] View `modules-list.php`
+- [x] View `module-form.php`
+- [x] Module anlegen, bearbeiten, löschen
+- [x] Nonces und Capability-Checks in allen Modul-Aktionen
+- [x] Tabellenansicht mit Such-/Sortiergrundlage, sofern sinnvoll
+- [x] WordPress-Standard-Notices für Erfolg/Fehler
 
 **Validierung Phase 3:**
-- [ ] Modul kann im Admin angelegt werden
-- [ ] Modul kann bearbeitet werden
-- [ ] Modul kann gelöscht werden
-- [ ] Keine PHP-Warnings/Notices im WP_DEBUG-Modus
-- [ ] UI ist klar und WordPress-konform
+- [x] Modul kann im Admin angelegt werden
+- [x] Modul kann bearbeitet werden
+- [x] Modul kann gelöscht werden
+- [x] Keine PHP-Warnings/Notices im WP_DEBUG-Modus
+- [x] UI ist klar und WordPress-konform
 
 ---
 
@@ -129,7 +129,7 @@
 ## Gesamt-Status
 - [x] Phase 1 abgeschlossen
 - [ ] Phase 2 abgeschlossen
-- [ ] Phase 3 abgeschlossen
+- [x] Phase 3 abgeschlossen
 - [ ] Phase 4 abgeschlossen
 - [ ] Phase 5 abgeschlossen
 - [ ] Phase 6 abgeschlossen

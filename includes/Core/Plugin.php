@@ -2,6 +2,8 @@
 
 namespace BS\ModularFramework\Core;
 
+use BS\ModularFramework\Admin\AdminMenu;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -52,35 +54,8 @@ class Plugin {
 	 * @return void
 	 */
 	public function register_admin_menu(): void {
-		if ( ! current_user_can( Capabilities::manage_modules() ) ) {
-			return;
-		}
-
-		add_menu_page(
-			__( 'Modular Framework', 'bs-modular-framework' ),
-			__( 'Modular Framework', 'bs-modular-framework' ),
-			Capabilities::manage_modules(),
-			'bs-modular-framework',
-			array( $this, 'render_stub_admin_page' ),
-			'dashicons-index-card',
-			60
-		);
-	}
-
-	/**
-	 * Einfache Platzhalter-Seite für das Admin-Menü.
-	 *
-	 * @return void
-	 */
-	public function render_stub_admin_page(): void {
-		if ( ! current_user_can( Capabilities::manage_modules() ) ) {
-			wp_die( esc_html__( 'Du hast keine Berechtigung, diese Seite zu sehen.', 'bs-modular-framework' ) );
-		}
-
-		echo '<div class="wrap">';
-		echo '<h1>' . esc_html__( 'BS_Modular-Framework', 'bs-modular-framework' ) . '</h1>';
-		echo '<p>' . esc_html__( 'Grundgerüst des Plugins ist aktiv. Modul- und Feldverwaltung folgen in späteren Phasen.', 'bs-modular-framework' ) . '</p>';
-		echo '</div>';
+		$menu = new AdminMenu();
+		$menu->register();
 	}
 }
 

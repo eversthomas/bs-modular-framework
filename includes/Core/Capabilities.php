@@ -15,7 +15,8 @@ class Capabilities {
 	 * @return string
 	 */
 	public static function manage_modules(): string {
-		return 'manage_bs_mf_modules';
+		// MVP: an Administratoren koppeln.
+		return 'manage_options';
 	}
 
 	/**
@@ -24,7 +25,8 @@ class Capabilities {
 	 * @return string
 	 */
 	public static function manage_entries(): string {
-		return 'manage_bs_mf_entries';
+		// MVP: ebenfalls Administratoren (später feiner granulieren).
+		return 'manage_options';
 	}
 
 	/**
@@ -33,7 +35,8 @@ class Capabilities {
 	 * @return string
 	 */
 	public static function edit_entries(): string {
-		return 'edit_bs_mf_entries';
+		// MVP: Redaktionsrechte können später separat gemappt werden.
+		return 'edit_posts';
 	}
 }
 
