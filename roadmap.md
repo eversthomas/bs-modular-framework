@@ -1,0 +1,135 @@
+# BS_Modular-Framework – Roadmap
+
+## Phase 1 – Fundament & Plugin-Gerüst
+- [x] Plugin-Header-Datei (`bs-modular-framework.php`) mit korrekten WP-Metadaten
+- [x] `composer.json` mit PSR-4-Autoloading für `BS\ModularFramework`
+- [x] Core-Klassen: `Plugin.php`, `Loader.php`, `Activator.php`, `Deactivator.php`, `Migrator.php`
+- [x] `Capabilities.php` für eigene Berechtigungen
+- [x] Aktivierungs-Hook mit DB-Anlage für `modules`, `fields`, `entries`, `field_values`
+- [x] Datenbankversion als Option speichern
+- [x] `uninstall.php` mit sauberem Entfernen aller Plugin-Daten
+- [x] `readme.txt` Grundgerüst
+- [x] Basisstruktur für Admin-Menü registrierbar
+
+**Validierung Phase 1:**
+- [x] Plugin lässt sich aktivieren/deaktivieren ohne PHP-Fehler
+- [x] DB-Tabellen werden korrekt angelegt
+- [x] Deinstallationslogik ist vorhanden
+- [x] Autoloading funktioniert
+- [x] PHPUnit Smoke-Test für Plugin-Bootstrap vorhanden
+
+---
+
+## Phase 2 – Domain-Modell, Repositories & Feldtypen
+- [ ] Domain-Klassen: `Module`, `FieldDefinition`, `Entry`, `FieldValue`
+- [ ] Abstrakte `Repository.php`
+- [ ] `ModuleRepository.php`
+- [ ] `FieldRepository.php`
+- [ ] `EntryRepository.php`
+- [ ] `FieldValueRepository.php`
+- [ ] `FieldTypeRegistry.php`
+- [ ] `FieldTypeInterface.php` + `AbstractFieldType.php`
+- [ ] Feldtypen: Text, Textarea, Number, Email, URL, Date, Select, Checkbox, Image
+- [ ] `Validator.php` und `Sanitizer.php`
+- [ ] Validierungs- und Sanitization-Logik pro Feldtyp
+
+**Validierung Phase 2:**
+- [ ] Unit-Tests für Feldtypen vorhanden
+- [ ] Repositories können Daten lesen/schreiben
+- [ ] Ungültige Werte werden korrekt abgelehnt
+- [ ] Select speichert nur erlaubte Optionen
+- [ ] Image-Feld akzeptiert Medien-ID als gültiges Format
+
+---
+
+## Phase 3 – Modulverwaltung im Admin
+- [ ] `AdminMenu.php`
+- [ ] `ModuleAdminPage.php`
+- [ ] `ModuleListTable.php`
+- [ ] View `modules-list.php`
+- [ ] View `module-form.php`
+- [ ] Module anlegen, bearbeiten, löschen
+- [ ] Nonces und Capability-Checks in allen Modul-Aktionen
+- [ ] Tabellenansicht mit Such-/Sortiergrundlage, sofern sinnvoll
+- [ ] WordPress-Standard-Notices für Erfolg/Fehler
+
+**Validierung Phase 3:**
+- [ ] Modul kann im Admin angelegt werden
+- [ ] Modul kann bearbeitet werden
+- [ ] Modul kann gelöscht werden
+- [ ] Keine PHP-Warnings/Notices im WP_DEBUG-Modus
+- [ ] UI ist klar und WordPress-konform
+
+---
+
+## Phase 4 – Feldverwaltung je Modul
+- [ ] `FieldAdminPage.php`
+- [ ] View `fields-list.php`
+- [ ] View `field-form.php`
+- [ ] Felder pro Modul anlegen, bearbeiten, löschen
+- [ ] Feldsortierung speichern
+- [ ] Pflichtfeld-Option
+- [ ] Select-Konfiguration über einfache Text-/Listenlogik
+- [ ] Bildfeld-Konfiguration integrieren
+- [ ] Feld-Keys innerhalb eines Moduls eindeutig validieren
+
+**Validierung Phase 4:**
+- [ ] Feld kann einem Modul hinzugefügt werden
+- [ ] Feldtypen werden korrekt gespeichert
+- [ ] Select-Feld akzeptiert und validiert Optionen korrekt
+- [ ] Doppelte Feld-Keys werden verhindert
+- [ ] Bildfeld ist als Typ auswählbar
+
+---
+
+## Phase 5 – Eintragsverwaltung im Admin
+- [ ] `EntryAdminPage.php`
+- [ ] `EntryListTable.php`
+- [ ] View `entries-list.php`
+- [ ] View `entry-form.php`
+- [ ] Formular wird dynamisch aus Felddefinitionen erzeugt
+- [ ] Einträge anlegen, bearbeiten, löschen
+- [ ] Validierung je Feldtyp
+- [ ] Speicherung in `entries` + `field_values`
+- [ ] Bildfeld mit WordPress-Medienmanager nutzbar
+- [ ] Admin-JS für Medienmanager minimal integrieren
+- [ ] `MediaManager.php` + `media-manager.js`
+
+**Validierung Phase 5:**
+- [ ] Eintrag kann angelegt werden
+- [ ] Eintrag kann bearbeitet werden
+- [ ] Eintrag kann gelöscht werden
+- [ ] Pflichtfelder werden erzwungen
+- [ ] Bild kann über Medienmanager gewählt werden
+- [ ] Gespeicherte Werte werden korrekt wieder geladen
+- [ ] Keine JS-Konsolenfehler im Normalbetrieb
+
+---
+
+## Phase 6 – Polishing, Sicherheit & Stabilisierung
+- [ ] Vollständige Escaping-Prüfung
+- [ ] Vollständige Nonce-Prüfung
+- [ ] Vollständige Capability-Prüfung
+- [ ] `admin.css` nur minimal und gezielt
+- [ ] Übersetzbarkeit aller Strings vorbereiten
+- [ ] `.pot`-Datei vorbereiten
+- [ ] PHPCS-Kompatibilität verbessern
+- [ ] Basis-Tests vervollständigen
+- [ ] DB-Indizes auf sinnvolle Kernspalten prüfen
+- [ ] Code dokumentieren
+
+**Validierung Phase 6:**
+- [ ] Keine offenen Sicherheitslücken in offensichtlichen Formularpfaden
+- [ ] WP_DEBUG ohne Notices/Warnings
+- [ ] PHPCS weitgehend sauber
+- [ ] Plugin-MVP ist manuell testbar und stabil
+
+---
+
+## Gesamt-Status
+- [x] Phase 1 abgeschlossen
+- [ ] Phase 2 abgeschlossen
+- [ ] Phase 3 abgeschlossen
+- [ ] Phase 4 abgeschlossen
+- [ ] Phase 5 abgeschlossen
+- [ ] Phase 6 abgeschlossen
