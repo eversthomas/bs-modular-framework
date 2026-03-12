@@ -19,6 +19,7 @@ use BS\ModularFramework\Core\Plugin;
 use BS\ModularFramework\Core\Activator;
 use BS\ModularFramework\Core\Deactivator;
 use BS\ModularFramework\Admin\AdminMenu;
+use BS\ModularFramework\Admin\MediaManager;
 
 // Composer Autoloader (falls vorhanden).
 $bs_mf_autoload = __DIR__ . '/vendor/autoload.php';
@@ -78,6 +79,10 @@ if ( ! class_exists( Plugin::class ) ) {
 // Admin-Klassen sicherstellen.
 if ( ! class_exists( AdminMenu::class ) ) {
 	require_once __DIR__ . '/includes/Admin/AdminMenu.php';
+}
+
+if ( ! class_exists( MediaManager::class ) ) {
+	require_once __DIR__ . '/includes/Admin/MediaManager.php';
 }
 
 /**

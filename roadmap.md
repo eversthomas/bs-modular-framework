@@ -83,17 +83,17 @@
 ---
 
 ## Phase 5 – Eintragsverwaltung im Admin
-- [ ] `EntryAdminPage.php`
-- [ ] `EntryListTable.php`
-- [ ] View `entries-list.php`
-- [ ] View `entry-form.php`
-- [ ] Formular wird dynamisch aus Felddefinitionen erzeugt
-- [ ] Einträge anlegen, bearbeiten, löschen
-- [ ] Validierung je Feldtyp
-- [ ] Speicherung in `entries` + `field_values`
-- [ ] Bildfeld mit WordPress-Medienmanager nutzbar
-- [ ] Admin-JS für Medienmanager minimal integrieren
-- [ ] `MediaManager.php` + `media-manager.js`
+- [x] `EntryAdminPage.php`
+- [x] `EntryListTable.php`
+- [x] View `entries-list.php`
+- [x] View `entry-form.php`
+- [x] Formular wird dynamisch aus Felddefinitionen erzeugt
+- [x] Einträge anlegen, bearbeiten, löschen
+- [x] Validierung je Feldtyp
+- [x] Speicherung in `entries` + `field_values`
+- [x] Bildfeld mit WordPress-Medienmanager nutzbar
+- [x] Admin-JS für Medienmanager minimal integrieren
+- [x] `MediaManager.php` + `media-manager.js`
 
 **Validierung Phase 5:**
 - [ ] Eintrag kann angelegt werden

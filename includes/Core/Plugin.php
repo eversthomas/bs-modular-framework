@@ -3,6 +3,7 @@
 namespace BS\ModularFramework\Core;
 
 use BS\ModularFramework\Admin\AdminMenu;
+use BS\ModularFramework\Admin\MediaManager;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -37,6 +38,10 @@ class Plugin {
 	 */
 	protected function register_hooks(): void {
 		$this->loader->add_action( 'admin_menu', $this, 'register_admin_menu' );
+
+		// Media-Assets für Bildfelder.
+		$media_manager = new MediaManager();
+		$media_manager->register();
 	}
 
 	/**

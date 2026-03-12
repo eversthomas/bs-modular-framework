@@ -37,6 +37,15 @@ class AdminMenu {
 			'bs-modular-framework-fields',
 			array( $this, 'render_fields_page' )
 		);
+
+		add_submenu_page(
+			self::MENU_SLUG_MODULES,
+			__( 'Einträge', 'bs-modular-framework' ),
+			__( 'Einträge', 'bs-modular-framework' ),
+			Capabilities::manage_entries(),
+			'bs-modular-framework-entries',
+			array( $this, 'render_entries_page' )
+		);
 	}
 
 	/**
@@ -72,6 +81,24 @@ class AdminMenu {
 		}
 
 		$page = new FieldAdminPage();
+		$page->handle_request();
+	}
+
+	/**
+	 * Callback für die Eintragsverwaltungs-Seite.
+	 *
+	 * @return void
+	 */
+	public function render_entries_page(): void {
+		if ( ! current_user_can( Capabilities::manage_entries() ) ) {
+			wp_die( esc_html__( 'Du hast keine Berechtigung, diese Seite zu sehen.', 'bs-modular-framework' ) );
+		}
+
+		if ( ! class_exists( __NAMESPACE__ . '\\EntryAdminPage' ) ) {
+			require_once __DIR__ . '/EntryAdminPage.php';
+		}
+
+		$page = new EntryAdminPage();
 		$page->handle_request();
 	}
 }
