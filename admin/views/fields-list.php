@@ -38,6 +38,16 @@ $add_url = add_query_arg(
 		?>
 	</h1>
 
+	<p class="description">
+		<?php
+		printf(
+			/* translators: %s: Modulname. */
+			esc_html__( 'Felder bestimmen, welche Informationen du für das Modul „%s“ erfasst. Jedes Feld hat einen eindeutigen Key, den du in Templates oder Abfragen verwenden kannst.', 'bs-modular-framework' ),
+			$current_module->name
+		);
+		?>
+	</p>
+
 	<a href="<?php echo esc_url( $add_url ); ?>" class="page-title-action">
 		<?php esc_html_e( 'Neues Feld hinzufügen', 'bs-modular-framework' ); ?>
 	</a>
@@ -63,7 +73,17 @@ $add_url = add_query_arg(
 		<?php if ( empty( $fields ) ) : ?>
 			<tr>
 				<td colspan="6">
-					<?php esc_html_e( 'Für dieses Modul sind noch keine Felder definiert.', 'bs-modular-framework' ); ?>
+					<p>
+						<?php esc_html_e( 'Für dieses Modul sind noch keine Felder definiert.', 'bs-modular-framework' ); ?>
+					</p>
+					<p>
+						<?php esc_html_e( 'Lege jetzt das erste Feld an, um festzulegen, welche Informationen für dieses Modul erfasst werden sollen.', 'bs-modular-framework' ); ?>
+					</p>
+					<p>
+						<a href="<?php echo esc_url( $add_url ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Erstes Feld hinzufügen', 'bs-modular-framework' ); ?>
+						</a>
+					</p>
 				</td>
 			</tr>
 		<?php else : ?>

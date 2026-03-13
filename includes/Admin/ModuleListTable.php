@@ -133,9 +133,9 @@ class ModuleListTable extends WP_List_Table {
 		);
 
 		$actions = array(
-			'edit'    => sprintf( '<a href="%s">%s</a>', esc_url( $edit_url ), esc_html__( 'Bearbeiten', 'bs-modular-framework' ) ),
-			'fields'  => sprintf( '<a href="%s">%s</a>', esc_url( $fields_url ), esc_html__( 'Felder', 'bs-modular-framework' ) ),
-			'entries' => sprintf( '<a href="%s">%s</a>', esc_url( $entries_url ), esc_html__( 'Einträge', 'bs-modular-framework' ) ),
+			'edit'    => sprintf( '<a href="%s">%s</a>', esc_url( $edit_url ), esc_html__( 'Modul bearbeiten', 'bs-modular-framework' ) ),
+			'fields'  => sprintf( '<a href="%s">%s</a>', esc_url( $fields_url ), esc_html__( 'Felder definieren', 'bs-modular-framework' ) ),
+			'entries' => sprintf( '<a href="%s">%s</a>', esc_url( $entries_url ), esc_html__( 'Einträge verwalten', 'bs-modular-framework' ) ),
 			'delete'  => sprintf( '<a href="%s" onclick="return confirm(\'%s\');">%s</a>', esc_url( $delete_url ), esc_js( __( 'Modul wirklich löschen?', 'bs-modular-framework' ) ), esc_html__( 'Löschen', 'bs-modular-framework' ) ),
 		);
 

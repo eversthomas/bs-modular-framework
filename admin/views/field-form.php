@@ -49,6 +49,16 @@ $action_url = add_query_arg(
 		?>
 	</h1>
 
+	<p class="description">
+		<?php
+		printf(
+			/* translators: %s: Modulname. */
+			esc_html__( 'Definiere hier ein Feld für das Modul „%s“. Der Feld-Key wird später verwendet, um den Wert programmatisch abzurufen.', 'bs-modular-framework' ),
+			$current_module->name
+		);
+		?>
+	</p>
+
 	<form method="post" action="<?php echo esc_url( $action_url ); ?>">
 		<?php wp_nonce_field( 'bs_mf_save_field' ); ?>
 		<input type="hidden" name="bs_mf_field_action" value="save" />
@@ -56,11 +66,15 @@ $action_url = add_query_arg(
 			<input type="hidden" name="id" value="<?php echo esc_attr( (string) $field->id ); ?>" />
 		<?php endif; ?>
 
+		<p class="description">
+			<?php esc_html_e( 'Mit * markierte Felder sind Pflichtfelder.', 'bs-modular-framework' ); ?>
+		</p>
+
 		<table class="form-table" role="presentation">
 			<tbody>
 				<tr>
 					<th scope="row">
-						<label for="bs_mf_field_label"><?php esc_html_e( 'Label', 'bs-modular-framework' ); ?></label>
+						<label for="bs_mf_field_label"><?php esc_html_e( 'Label *', 'bs-modular-framework' ); ?></label>
 					</th>
 					<td>
 						<input name="label" type="text" id="bs_mf_field_label" value="<?php echo esc_attr( $label ); ?>" class="regular-text" required />
@@ -72,7 +86,7 @@ $action_url = add_query_arg(
 
 				<tr>
 					<th scope="row">
-						<label for="bs_mf_field_key"><?php esc_html_e( 'Key', 'bs-modular-framework' ); ?></label>
+						<label for="bs_mf_field_key"><?php esc_html_e( 'Key *', 'bs-modular-framework' ); ?></label>
 					</th>
 					<td>
 						<input name="field_key" type="text" id="bs_mf_field_key" value="<?php echo esc_attr( $field_key ); ?>" class="regular-text" />

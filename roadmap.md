@@ -106,6 +106,25 @@
 
 ---
 
+## Phase 5b – UX, Navigation & Klarheit
+- [ ] Hauptmenü-Bezeichnung von „Modular Framework“ zu „Module“ anpassen
+- [ ] Submenü „Felder“ in übersichtliche Feldliste mit Modul-Filter umbauen
+- [ ] Submenü „Einträge“ in übersichtliche Eintragsliste mit Modul-Filter umbauen
+- [ ] Zeilenaktionen in der Modulliste klar und schrittweise benennen (z. B. „Felder definieren“, „Einträge verwalten“)
+- [ ] Einleitende Beschreibungstexte auf Modul-, Feld- und Eintrags-Seiten ergänzen
+- [ ] Kontext („für Modul: …“) in Überschriften visuell hervorheben
+- [ ] Weiche Fallbacks statt `wp_die()` bei fehlender `module_id` (Rückleitungen zur Modulliste)
+- [ ] Leere Zustände (keine Module/Felder/Einträge) mit erklärenden Texten + primären Aktionen gestalten
+- [ ] Pflichtfelder visuell klar kennzeichnen und erläutern
+
+**Validierung Phase 5b:**
+- [ ] User versteht ohne Doku den Flow „Modul → Felder → Einträge“
+- [ ] Globales „Felder“-Menü ist ohne Vorwissen nutzbar (Modul-Auswahl klar)
+- [ ] Globales „Einträge“-Menü ist ohne Vorwissen nutzbar (Modul-Auswahl klar)
+- [ ] Es treten im regulären Nutzungsfluss keine harten Abbrüche (`wp_die`) mehr auf
+
+---
+
 ## Phase 6 – Polishing, Sicherheit & Stabilisierung
 - [ ] Vollständige Escaping-Prüfung
 - [ ] Vollständige Nonce-Prüfung
@@ -132,4 +151,8 @@
 - [x] Phase 3 abgeschlossen
 - [x] Phase 4 abgeschlossen
 - [x] Phase 5 abgeschlossen
+- [ ] Phase 5b abgeschlossen
 - [ ] Phase 6 abgeschlossen
+
+
+Bemerkungen: Wir müssen auch noch sicherstellen, dass mögliche erstellte Listen im Module, von anderen Plugins oder Funktionen benutzt werden können, sowie einen Weg, diese auch gezielt auf Seiten oder in Beiträgen nutzbar zu machen.

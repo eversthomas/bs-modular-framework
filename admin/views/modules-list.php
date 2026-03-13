@@ -22,6 +22,10 @@ $add_url = add_query_arg(
 	</a>
 	<hr class="wp-header-end" />
 
+	<p class="description">
+		<?php esc_html_e( 'Module sind Sammlungen von Feldern und Einträgen. Lege ein Modul an, um wiederverwendbare Datentypen (z. B. Events, Personen oder Standorte) zu definieren.', 'bs-modular-framework' ); ?>
+	</p>
+
 	<form method="post">
 		<?php
 		$table->display();

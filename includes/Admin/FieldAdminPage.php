@@ -64,13 +64,15 @@ class FieldAdminPage {
 
 		$module_id = $this->get_module_id_from_request();
 		if ( ! $module_id ) {
-			wp_die( esc_html__( 'Kein Modul ausgewählt.', 'bs-modular-framework' ) );
+			$this->handle_missing_module();
+			return;
 		}
 
 		$this->current_module = $this->modules->find_by_id( $module_id );
 
 		if ( ! $this->current_module ) {
-			wp_die( esc_html__( 'Das angeforderte Modul wurde nicht gefunden.', 'bs-modular-framework' ) );
+			$this->handle_missing_module();
+			return;
 		}
 	}
 
@@ -87,6 +89,30 @@ class FieldAdminPage {
 
 		$id = (int) $id;
 		return $id > 0 ? $id : null;
+	}
+
+	/**
+	 * Weicher Fallback, wenn kein Modul ausgewählt oder gefunden wurde.
+	 *
+	 * @return void
+	 */
+	protected function handle_missing_module(): void {
+		add_settings_error(
+			'bs_mf_fields',
+			'bs_mf_fields_missing_module',
+			esc_html__( 'Bitte wähle ein Modul aus, um dessen Felder zu verwalten.', 'bs-modular-framework' ),
+			'error'
+		);
+
+		$redirect_url = add_query_arg(
+			array(
+				'page' => 'bs-modular-framework-fields',
+			),
+			admin_url( 'admin.php' )
+		);
+
+		wp_safe_redirect( $redirect_url );
+		exit;
 	}
 
 	/**

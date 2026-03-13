@@ -44,6 +44,16 @@ $action_url = add_query_arg(
 		?>
 	</h1>
 
+	<p class="description">
+		<?php
+		printf(
+			/* translators: %s: Modulname. */
+			esc_html__( 'Erfasse hier einen Eintrag für das Modul „%s“. Die verfügbaren Felder ergeben sich aus den Felddefinitionen des Moduls.', 'bs-modular-framework' ),
+			$current_module->name
+		);
+		?>
+	</p>
+
 	<form method="post" action="<?php echo esc_url( $action_url ); ?>">
 		<?php wp_nonce_field( 'bs_mf_save_entry' ); ?>
 		<input type="hidden" name="bs_mf_entry_action" value="save" />
@@ -51,12 +61,16 @@ $action_url = add_query_arg(
 			<input type="hidden" name="id" value="<?php echo esc_attr( (string) $entry->id ); ?>" />
 		<?php endif; ?>
 
+		<p class="description">
+			<?php esc_html_e( 'Mit * markierte Felder sind Pflichtfelder.', 'bs-modular-framework' ); ?>
+		</p>
+
 		<h2 class="title"><?php esc_html_e( 'Allgemeine Angaben', 'bs-modular-framework' ); ?></h2>
 		<table class="form-table" role="presentation">
 			<tbody>
 				<tr>
 					<th scope="row">
-						<label for="bs_mf_entry_title"><?php esc_html_e( 'Titel', 'bs-modular-framework' ); ?></label>
+						<label for="bs_mf_entry_title"><?php esc_html_e( 'Titel *', 'bs-modular-framework' ); ?></label>
 					</th>
 					<td>
 						<input name="title" type="text" id="bs_mf_entry_title" value="<?php echo esc_attr( $title ); ?>" class="regular-text" required />

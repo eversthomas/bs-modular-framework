@@ -3,6 +3,8 @@
 namespace BS\ModularFramework\Admin;
 
 use BS\ModularFramework\Core\Capabilities;
+use BS\ModularFramework\Data\ModuleRepository;
+use wpdb;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -20,8 +22,8 @@ class AdminMenu {
 	 */
 	public function register(): void {
 		add_menu_page(
-			__( 'Modular Framework', 'bs-modular-framework' ),
-			__( 'Modular Framework', 'bs-modular-framework' ),
+			__( 'Modular Framework – Module', 'bs-modular-framework' ),
+			__( 'Module', 'bs-modular-framework' ),
 			Capabilities::manage_modules(),
 			self::MENU_SLUG_MODULES,
 			array( $this, 'render_modules_page' ),
@@ -31,7 +33,7 @@ class AdminMenu {
 
 		add_submenu_page(
 			self::MENU_SLUG_MODULES,
-			__( 'Felder', 'bs-modular-framework' ),
+			__( 'Felder (alle Module)', 'bs-modular-framework' ),
 			__( 'Felder', 'bs-modular-framework' ),
 			Capabilities::manage_modules(),
 			'bs-modular-framework-fields',
@@ -40,12 +42,52 @@ class AdminMenu {
 
 		add_submenu_page(
 			self::MENU_SLUG_MODULES,
-			__( 'Einträge', 'bs-modular-framework' ),
+			__( 'Einträge (alle Module)', 'bs-modular-framework' ),
 			__( 'Einträge', 'bs-modular-framework' ),
 			Capabilities::manage_entries(),
 			'bs-modular-framework-entries',
 			array( $this, 'render_entries_page' )
 		);
+	}
+
+	/**
+	 * Liefert alle Module für Übersichtsseiten.
+	 *
+	 * @return array<int,array<string,mixed>>
+	 */
+	protected function get_all_modules(): array {
+		global $wpdb;
+
+		if ( ! $wpdb instanceof wpdb ) {
+			return array();
+		}
+
+		if ( ! class_exists( \BS\ModularFramework\Data\Repository::class ) ) {
+			require_once dirname( __DIR__, 1 ) . '/Data/Repository.php';
+		}
+
+		if ( ! class_exists( \BS\ModularFramework\Data\ModuleRepository::class ) ) {
+			require_once dirname( __DIR__, 1 ) . '/Data/ModuleRepository.php';
+		}
+
+		if ( ! class_exists( \BS\ModularFramework\Domain\Module::class ) ) {
+			require_once dirname( __DIR__, 1 ) . '/Domain/Module.php';
+		}
+
+		$repository = new ModuleRepository( $wpdb );
+
+		$modules = $repository->find_all();
+
+		$result = array();
+		foreach ( $modules as $module ) {
+			$result[ $module->id ] = array(
+				'id'   => $module->id,
+				'name' => $module->name,
+				'slug' => $module->slug,
+			);
+		}
+
+		return $result;
 	}
 
 	/**
@@ -76,12 +118,21 @@ class AdminMenu {
 			wp_die( esc_html__( 'Du hast keine Berechtigung, diese Seite zu sehen.', 'bs-modular-framework' ) );
 		}
 
-		if ( ! class_exists( __NAMESPACE__ . '\\FieldAdminPage' ) ) {
-			require_once __DIR__ . '/FieldAdminPage.php';
+		$module_id = isset( $_GET['module_id'] ) ? (int) wp_unslash( $_GET['module_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		if ( $module_id > 0 ) {
+			if ( ! class_exists( __NAMESPACE__ . '\\FieldAdminPage' ) ) {
+				require_once __DIR__ . '/FieldAdminPage.php';
+			}
+
+			$page = new FieldAdminPage();
+			$page->handle_request();
+			return;
 		}
 
-		$page = new FieldAdminPage();
-		$page->handle_request();
+		$modules = $this->get_all_modules();
+
+		require dirname( __DIR__, 2 ) . '/admin/views/fields-overview.php';
 	}
 
 	/**
@@ -94,12 +145,21 @@ class AdminMenu {
 			wp_die( esc_html__( 'Du hast keine Berechtigung, diese Seite zu sehen.', 'bs-modular-framework' ) );
 		}
 
-		if ( ! class_exists( __NAMESPACE__ . '\\EntryAdminPage' ) ) {
-			require_once __DIR__ . '/EntryAdminPage.php';
+		$module_id = isset( $_GET['module_id'] ) ? (int) wp_unslash( $_GET['module_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		if ( $module_id > 0 ) {
+			if ( ! class_exists( __NAMESPACE__ . '\\EntryAdminPage' ) ) {
+				require_once __DIR__ . '/EntryAdminPage.php';
+			}
+
+			$page = new EntryAdminPage();
+			$page->handle_request();
+			return;
 		}
 
-		$page = new EntryAdminPage();
-		$page->handle_request();
+		$modules = $this->get_all_modules();
+
+		require dirname( __DIR__, 2 ) . '/admin/views/entries-overview.php';
 	}
 }
 

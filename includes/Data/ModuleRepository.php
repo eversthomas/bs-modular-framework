@@ -75,5 +75,28 @@ class ModuleRepository extends Repository {
 			(string) $row->updated_at
 		);
 	}
+
+	/**
+	 * Liefert alle Module, sortiert nach Sortierung und ID.
+	 *
+	 * @return Module[]
+	 */
+	public function find_all(): array {
+		$sql = "SELECT * FROM {$this->table} ORDER BY sort_order ASC, id ASC";
+
+		$rows = $this->db->get_results( $sql ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+
+		if ( ! $rows ) {
+			return array();
+		}
+
+		$modules = array();
+
+		foreach ( $rows as $row ) {
+			$modules[] = $this->map_row_to_entity( $row );
+		}
+
+		return $modules;
+	}
 }
 

@@ -27,6 +27,10 @@ $sort_order  = $is_edit ? $module->sort_order : 0;
 		<?php echo esc_html( $is_edit ? __( 'Modul bearbeiten', 'bs-modular-framework' ) : __( 'Neues Modul anlegen', 'bs-modular-framework' ) ); ?>
 	</h1>
 
+	<p class="description">
+		<?php esc_html_e( 'Ein Modul fasst Felder und Einträge zu einem Datentyp zusammen, z. B. „Events“, „Teammitglieder“ oder „Standorte“.', 'bs-modular-framework' ); ?>
+	</p>
+
 	<form method="post" action="<?php echo esc_url( $action_url ); ?>">
 		<?php wp_nonce_field( 'bs_mf_save_module' ); ?>
 		<input type="hidden" name="bs_mf_module_action" value="save" />

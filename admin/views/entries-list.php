@@ -38,6 +38,16 @@ $add_url = add_query_arg(
 		?>
 	</h1>
 
+	<p class="description">
+		<?php
+		printf(
+			/* translators: %s: Modulname. */
+			esc_html__( 'Einträge sind konkrete Datensätze des Moduls „%s“, z. B. einzelne Inhalte, Personen oder Standorte.', 'bs-modular-framework' ),
+			$current_module->name
+		);
+		?>
+	</p>
+
 	<a href="<?php echo esc_url( $add_url ); ?>" class="page-title-action">
 		<?php esc_html_e( 'Neuen Eintrag hinzufügen', 'bs-modular-framework' ); ?>
 	</a>
