@@ -96,13 +96,13 @@
 - [x] `MediaManager.php` + `media-manager.js`
 
 **Validierung Phase 5:**
-- [ ] Eintrag kann angelegt werden
-- [ ] Eintrag kann bearbeitet werden
-- [ ] Eintrag kann gelöscht werden
-- [ ] Pflichtfelder werden erzwungen
-- [ ] Bild kann über Medienmanager gewählt werden
-- [ ] Gespeicherte Werte werden korrekt wieder geladen
-- [ ] Keine JS-Konsolenfehler im Normalbetrieb
+- [x] Eintrag kann angelegt werden
+- [x] Eintrag kann bearbeitet werden
+- [x] Eintrag kann gelöscht werden
+- [x] Pflichtfelder werden erzwungen
+- [x] Bild kann über Medienmanager gewählt werden
+- [x] Gespeicherte Werte werden korrekt wieder geladen
+- [x] Keine JS-Konsolenfehler im Normalbetrieb
 
 ---
 
@@ -131,5 +131,5 @@
 - [ ] Phase 2 abgeschlossen
 - [x] Phase 3 abgeschlossen
 - [x] Phase 4 abgeschlossen
-- [ ] Phase 5 abgeschlossen
+- [x] Phase 5 abgeschlossen
 - [ ] Phase 6 abgeschlossen
